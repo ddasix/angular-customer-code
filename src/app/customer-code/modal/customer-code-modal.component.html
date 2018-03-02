@@ -1,0 +1,101 @@
+<div mdbModal #staticModal="mdb-modal" *ngIf="isModalShown" class="modal fade"
+    tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+    (onHidden)="onHidden()"
+    style="overflow: auto;" [config]="{ignoreBackdropClick: true, backdrop: 'static'}">
+    <div class="modal-dialog" role="document">
+        <!--Content-->
+        <div class="modal-content">
+            <!--Header-->
+            <div class="modal-header light-blue darken-3 white-text">
+                <p class="h4"><i class="fa fa-pencil"></i> 거래처 관리</p>
+                <button type="button" class="close waves-effect waves-light" data-dismiss="modal" aria-label="Close" (click)="staticModal.hide()">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <!--Body-->
+            <div class="modal-body mb-0">
+                <form [formGroup]="myform" (ngSubmit)="newCustomerCode()">
+                    <input type="hidden" formControlName="id">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="md-form form-sm" [ngClass]="{
+                            'has-danger': myform.controls.code.invalid && myform.controls.code.dirty, 
+                            'has-success': myform.controls.code.valid && myform.controls.code.dirty 
+                            }">
+                                <i class="fa fa-envelope prefix"></i>
+                                <input placeholder="코드" type="text" id="code" class="form-control" formControlName="code">
+                                <label class="active" for="code">코드</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="md-form form-sm" [ngClass]="{
+                        'has-danger': myform.controls.ceo.invalid && myform.controls.ceo.dirty, 
+                        'has-success': myform.controls.ceo.valid && myform.controls.ceo.dirty 
+                        }">
+                        <i class="fa fa-lock prefix"></i>
+                        <input placeholder="대표자" type="text" id="ceo" class="form-control" formControlName="ceo">
+                        <label class="active" for="ceo">대표자</label>
+                    </div>
+            
+                    <div class="md-form form-sm">
+                        <i class="fa fa-tag prefix"></i>
+                        <input placeholder="사업자등록번호" type="text" id="etprNo" class="form-control" formControlName="etprNo">
+                        <label class="active" for="etprNo">사업자등록번호</label>
+                    </div>
+            
+                    <div class="md-form form-sm">
+                        <i class="fa fa-tag prefix"></i>
+                        <input placeholder="상호" type="text" id="corpNm" class="form-control" formControlName="corpNm">
+                        <label class="active" for="corpNm">상호</label>
+                    </div>
+            
+                    <div class="md-form form-sm">
+                        <i class="fa fa-tag prefix"></i>
+                        <input placeholder="업종" type="text" id="corpType" class="form-control" formControlName="corpType">
+                        <label class="active" for="corpType">업종</label>
+                    </div>
+                    <div class="md-form form-sm">
+                        <i class="fa fa-tag prefix"></i>
+                        <input placeholder="우편번호" type="text" id="postCode" class="form-control" formControlName="postCode">
+                        <label class="active" for="postCode">우편번호</label>
+                    </div>
+            
+                    <div class="md-form form-sm">
+                        <i class="fa fa-tag prefix"></i>
+                        <input placeholder="주소" type="text" id="addr1" class="form-control" formControlName="addr1">
+                        <label class="active" for="addr1">주소</label>
+                    </div>
+            
+                    <div class="md-form form-sm">
+                        <i class="fa fa-tag prefix"></i>
+                        <input placeholder="상세 주소" type="text" id="addr2" class="form-control" formControlName="addr2">
+                        <label class="active" for="addr2">상세 주소</label>
+                    </div>
+            
+                    <div class="md-form form-sm">
+                        <i class="fa fa-tag prefix"></i>
+                        <input placeholder="건물번호" type="text" id="bldNo" class="form-control" formControlName="bldNo">
+                        <label class="active" for="bldNo">건물번호</label>
+                    </div>
+            
+                    <div class="md-form form-sm">
+                        <i class="fa fa-tag prefix"></i>
+                        <input placeholder="공급자부호" type="text" id="suplCd" class="form-control" formControlName="suplCd">
+                        <label class="active" for="suplCd">공급자부호</label>
+                    </div>
+            
+                    <div class="md-form form-sm">
+                        <i class="fa fa-tag prefix"></i>
+                        <input placeholder="전화번호" type="text" id="telNo" class="form-control" formControlName="telNo">
+                        <label class="active" for="telNo">전화번호</label>
+                    </div>
+            
+                    <div class="text-center mt-1-half">
+                        <button type="submit" class="btn btn-info mb-2 waves-light" mdbRippleRadius>Send <i class="fa fa-send ml-1"></i></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!--/.Content-->
+    </div>
+</div>

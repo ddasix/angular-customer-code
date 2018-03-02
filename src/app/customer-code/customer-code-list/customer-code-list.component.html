@@ -1,0 +1,57 @@
+<customer-code-modal #customerCodeModal (outputProperty)="outputEvent($event)"></customer-code-modal>
+<section>
+  <div class="md-form form-md form-inline pull-right">
+    <div class="form-group">
+      <select class="form-control" #searchSrc>
+        <option value="code">코드</option>
+        <option value="corpNm">상호</option>
+        <option value="etprNo">사업자번호</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <input type="text" #searchText class="form-control">
+      <button class="btn btn-primary btn-md waves-light" type="button" mdbRippleRadius (click)="findCustomerCodeAll(searchSrc.value, searchText.value)">조회</button>
+    </div>
+  </div>
+</section>
+<section>
+  <table class="table table-sm table-striped">
+    <thead class="mdb-color darken-3">
+        <tr class="text-white">
+          <th class="w-5" scope="col">
+            <input type="checkbox" (change)="checkAll($event)">
+          </th>
+          <th class="w-15" scope="col">코드</th>
+          <th class="w-15" scope="col">상호</th>
+          <th class="w-15" scope="col">사업자번호</th>
+          <th class="w-15" scope="col">대표자</th>
+          <th class="w-15" scope="col">주소</th>
+          <th class="w-15" scope="col">actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let customerCode of customerCodes">
+          <th scope="row">
+            <input type="checkbox" value="{{ customerCode.id }}" [(ngModel)]="customerCode.state" />
+          </th>
+          <td>{{ customerCode.code }}</td>
+          <td>{{ customerCode.corpNm }}</td>
+          <td>{{ customerCode.etprNo }}</td>
+          <td>{{ customerCode.ceo }}</td>
+          <td>{{ customerCode.addr1 }} {{ customerCode.addr2 }}</td>
+          <td>
+            <div class="btn-group btn-group-sm">
+              <button class="btn btn-info btn-sm waves-light" (click)="detailCustomerCode(customerCode)">상세</button>
+              <button class="btn btn-danger btn-sm waves-light" (click)="deleteCustomerCode(customerCode)">삭제</button>
+              <button class="btn btn-blue-grey btn-sm waves-light" (click)="duplicateCustomerCode(customerCode)">복사</button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+  </table>
+
+  <div class="btn-group pull-right clearfix">
+    <button type="button" class="btn btn-primary btn-sm waves-light" (click)="showModal()" mdbRippleRadius>추가</button>
+    <button type="button" class="btn btn-danger btn-sm waves-light" (click)="deleteSelectedAll()" mdbRippleRadius>삭제</button>
+  </div>
+</section>
