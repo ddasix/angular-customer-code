@@ -1,6 +1,7 @@
 # Stomnet
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.8.
+인증서버는 https://github.com/ddasix/angular-customer-code-auth 에서 받은 수 있습니다.
 
 ## Development server
 
